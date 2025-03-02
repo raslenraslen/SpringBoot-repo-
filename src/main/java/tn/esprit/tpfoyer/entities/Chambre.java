@@ -1,33 +1,35 @@
-package tn.esprit.tpfoyer.entity;
-
+package tn.esprit.tpfoyer.entities;
+import jakarta.persistence.*;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 import java.util.List;
-
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chambre  implements Serializable {
+@Getter
+@Setter
+public class Chambre {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChambre;
     private Long numeroChambre;
-    private TypeChambre typeChambre;
+
+    @Enumerated(EnumType.STRING)
+    private TypeChambre typeC;
+
     @ManyToOne
     private Bloc bloc;
-    @OneToMany
-    private List<Reservation> reservations;
 
+    @OneToMany
+    private List<Reservation> reservations ;
+
+    public Long getIdChambre() {
+        return idChambre;
+    }
 
 
 }

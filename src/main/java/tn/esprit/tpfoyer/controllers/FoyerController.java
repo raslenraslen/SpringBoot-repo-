@@ -1,8 +1,7 @@
 package tn.esprit.tpfoyer.controllers;
-
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.tpfoyer.entity.Foyer;
+import tn.esprit.tpfoyer.entities.Foyer;
 import tn.esprit.tpfoyer.services.FoyerServiceImpl;
 import tn.esprit.tpfoyer.services.IFoyerServices;
 
@@ -23,6 +22,6 @@ public class FoyerController {
     }
     @GetMapping("/getByNomCapacite/{nom}/{capacite}")
     public Foyer getFoyer(@PathVariable("nom") String nom, @PathVariable("capacite") Long capacite) {
-   return foyerService.getNomCapacite(nom, capacite);
+        return foyerService.getNomCapacite(nom, capacite);
     }
 }
